@@ -4,93 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#f5efdf">
+  <meta name="theme-color" content="#242424">
   <link rel="icon" type="image/png" href="game/index.icon.png">
-  <title>Paper Town · Playtest</title>
+  <title>Paper Town</title>
   <style>
-    :root { color-scheme: light; font: 16px/1.55 system-ui, sans-serif; color: #343a31; background: #f5efdf; }
-    * { box-sizing: border-box; }
-    body { margin: 0; background-image: radial-gradient(#a38e6b20 .6px, transparent .6px); background-size: 5px 5px; }
-    main { max-width: 1180px; margin: auto; padding: 28px 24px 40px; }
-    header, .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
-    h1 { font: 700 clamp(32px, 5vw, 48px)/1.1 Georgia, serif; margin: 4px 0 12px; letter-spacing: -.03em; }
-    h2 { font: 700 21px/1.3 Georgia, serif; margin: 0 0 12px; }
-    p { margin: 8px 0; }
-    .eyebrow { color: #657859; text-transform: uppercase; letter-spacing: .18em; font-size: 12px; font-weight: 750; }
-    .build { font-size: 13px; color: #686b5c; padding: 8px 12px; background: #fffcf2; border: 1px dashed #bbb49e; border-radius: 7px; }
-    .stage { margin-top: 24px; width: 100%; aspect-ratio: 16/9; position: relative; overflow: hidden; border: 7px solid #fffcf2; border-radius: 12px; background: #dbe3cd; box-shadow: 0 5px 0 #d5c9af, 0 12px 30px #443f2910; }
-    .welcome { height: 100%; display: grid; place-content: center; text-align: center; padding: 24px; background: radial-gradient(ellipse at 50% 110%, #b2c49b 0%, transparent 65%); }
-    .welcome h2 { font-size: clamp(24px, 4vw, 40px); margin-bottom: 8px; }
-    .welcome p { max-width: 440px; margin: 0 auto 22px; }
-    button, .button { border: 1px solid #485d3b; background: #4e6542; color: #fffdf5; border-radius: 7px; padding: 11px 19px; font: inherit; font-weight: 650; cursor: pointer; text-decoration: none; }
-    button:hover, .button:hover { background: #3c5231; }
-    button:focus-visible, a:focus-visible { outline: 3px solid #a279bd; outline-offset: 4px; }
-    button:disabled { opacity: .5; cursor: default; }
-    .secondary { background: #fffcf2; color: #3b5032; border-color: #b3bba7; }
-    .secondary:hover { background: #e6eddb; }
-    iframe { border: 0; width: 100%; height: 100%; display: block; background: #242424; }
-    [hidden] { display: none !important; }
-    .toolbar { margin: 20px 0 26px; }
-    .toolbar p { max-width: 650px; color: #64685b; font-size: 14px; }
-    .toolbar div { display: flex; gap: 8px; }
-    .cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
-    .card { background: #fffcf2cc; border: 1px solid #d7ceb9; border-radius: 9px; padding: 22px; }
-    dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 7px 14px; font-size: 14px; }
-    dt { font-weight: 700; } dd { margin: 0; }
-    .card p { font-size: 14px; }
-    .card button { font-size: 14px; margin-top: 12px; }
-    #feedback { width: 100%; min-height: 140px; margin-top: 12px; padding: 10px; font: 13px/1.5 monospace; }
-    footer { font-size: 12px; color: #777767; margin-top: 24px; }
-    @media (max-width: 740px) { main { padding: 20px 12px; } .cards { grid-template-columns: 1fr; } .welcome p { font-size: 13px; margin-bottom: 12px; } .stage { border-width: 4px; } }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #242424; }
+    iframe { display: block; width: 100%; height: 100%; border: 0; }
   </style>
 </head>
 <body>
-<main>
-  <header>
-    <div><div class="eyebrow">A work in progress, ready to explore</div><h1>Paper Town</h1><p>The team playtest. Open, play, and tell us what you notice.</p></div>
-    <div class="build" id="build" aria-live="polite">Loading build details…</div>
-  </header>
-  <section class="stage" aria-label="Paper Town game">
-    <div class="welcome" id="welcome"><h2>Your next little adventure.</h2><p>Explore the town, find the portal, and take on the paper garden. No installation or account needed.</p><div><button id="start">Start playtest</button></div></div>
-    <iframe id="game" title="Paper Town playable game" allow="autoplay; fullscreen; gamepad" hidden></iframe>
-  </section>
-  <div class="toolbar">
-    <p id="load-note">Use a computer with a keyboard and mouse. The first load downloads the game and may take a moment.</p>
-    <div><button class="secondary" id="fullscreen" disabled>Fullscreen</button><button class="secondary" id="restart" disabled>Restart</button></div>
-  </div>
-  <section class="cards" aria-label="Playtest guide">
-    <article class="card"><h2>Find your feet</h2><dl><dt>WASD / arrows</dt><dd>Move around town</dd><dt>Space</dt><dd>Jump / advance dialogue</dd><dt>Hold Space</dt><dd>Skip the opening conversation</dd><dt>Click</dt><dd>Talk to nearby characters</dd><dt>E</dt><dd>Enter the portal when prompted</dd></dl></article>
-    <article class="card"><h2>Through the portal</h2><p>Cross the stone bridge to the village. The purple portal is in the clearing by the houses.</p><dl><dt>A / D</dt><dd>Move along the course</dd><dt>Click</dt><dd>Pull with your tongue</dd><dt>Q</dt><dd>Tail whip</dd><dt>Right click</dt><dd>Slip through paper</dd><dt>Boss fight</dt><dd>Space to attack · E to dodge</dd></dl></article>
-    <article class="card"><h2>Help shape the town</h2><p>Notice confusing jumps, missing art, or something that feels off? Send the team a screenshot and what you were doing.</p><button class="secondary" id="copy">Copy feedback template</button><p id="copy-status" role="status"></p><textarea id="feedback" aria-label="Feedback template to copy" readonly hidden></textarea></article>
-  </section>
-  <footer>Playtest progress is temporary. Restarting or refreshing begins a new session. This link always serves the latest published build.</footer>
-</main>
-<script>
-  let build = { revision: 'unknown', built_at: null };
-  const game = document.getElementById('game');
-  fetch('build.json', { cache: 'no-store' }).then(r => { if (!r.ok) throw Error('Build details unavailable'); return r.json(); }).then(info => {
-    build = info;
-    document.getElementById('build').textContent = `Build ${info.revision.slice(0, 7)} · ${new Date(info.built_at).toLocaleDateString()}`;
-    document.getElementById('load-note').textContent = `Use a computer with a keyboard and mouse. First load: about ${Math.ceil(info.download_bytes / 1024 / 1024)} MB. Please give the game a moment to load.`;
-  }).catch(() => { document.getElementById('build').textContent = 'Team playtest'; });
-  document.getElementById('start').addEventListener('click', () => {
-    document.getElementById('welcome').hidden = true;
-    game.hidden = false;
-    game.src = `game/index.html?build=${encodeURIComponent(build.revision)}`;
-    document.getElementById('fullscreen').disabled = false;
-    document.getElementById('restart').disabled = false;
-    game.focus();
-  });
-  document.getElementById('fullscreen').addEventListener('click', async () => {
-    try { await game.requestFullscreen(); game.focus(); }
-    catch { document.getElementById('load-note').textContent = 'Fullscreen is unavailable in this browser. You can keep playing in the window.'; }
-  });
-  document.getElementById('restart').addEventListener('click', () => { game.src = game.src; game.focus(); });
-  document.getElementById('copy').addEventListener('click', async () => {
-    const text = `Paper Town playtest\nBuild: ${build.revision}\nBrowser: ${navigator.userAgent}\n\nWhere I was:\nWhat I tried:\nWhat happened:\nWhat I expected:\nScreenshot/video:\n`;
-    try { await navigator.clipboard.writeText(text); document.getElementById('copy-status').textContent = 'Copied! Paste it into a message to the team.'; }
-    catch { const field = document.getElementById('feedback'); field.value = text; field.hidden = false; field.select(); document.getElementById('copy-status').textContent = 'Select and copy the template below.'; }
-  });
-</script>
+  <iframe id="game" src="game/index.html?build=f6694b5e32bbe6f42fdefc847cff77c7675704fc" title="Paper Town" allow="autoplay; fullscreen; gamepad" allowfullscreen></iframe>
+  <script>
+    const game = document.getElementById('game');
+    game.addEventListener('load', () => game.focus());
+  </script>
 </body>
 </html>
