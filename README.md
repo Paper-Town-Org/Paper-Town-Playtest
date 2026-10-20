@@ -4,6 +4,6 @@ Play: https://paper-town-org.github.io/Paper-Town-Playtest/
 
 This repository contains automatically published game builds. The development repository remains private.
 
-Build: `d71b8e3747a097c96ad44a5a661b6c347b6ee88b`
+Build: `c62b6443c07bceb13f1da2cffce89643f30f9c3d`
 
 Send feedback and screenshots to the Paper Town team, including the build ID.
